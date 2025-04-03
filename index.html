@@ -1,0 +1,29 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Processor</title>
+</head>
+<body>
+    <h2>Enter a URL to Process</h2>
+    <form id="urlForm">
+        <input type="text" id="urlInput" placeholder="Enter URL here" required>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("urlForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const url = document.getElementById("urlInput").value;
+            const response = await fetch("http://127.0.0.1:8000/process_url", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url: url })
+            });
+            const data = await response.json();
+            window.location.href = `result.html?output=${encodeURIComponent(data.result)}`;
+        });
+    </script>
+</body>
+</html>
