@@ -177,9 +177,6 @@ The application includes basic error handling, but consider adding:
 4. Add tests if applicable
 5. Submit a pull request
 
-## License
-
-[Add your license information here]
 
 ## Support
 
